@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import Litter from './Litter'
 
 export default class Letters extends Component {
-    render() {
-        const AlphabetArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"]
 
+    render() {
+        const AlphabetArr = Object.keys(this.props.LitterStatus)
+     
         return (
             <div>
-                {AlphabetArr.map(l=><span>{l}</span>)}
+                <p>Avaliable Letters </p>
+                <div> {AlphabetArr.map(l => this.props.LitterStatus[l] ? <Litter key={l} litter={l}>    </Litter> : <Litter key={l} letter={"-"}></Litter>)}</div>
             </div>
         )
     }
